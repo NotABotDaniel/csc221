@@ -13,45 +13,34 @@ class Polynomial:
     >>> print(p4)
     '2x^4 + 3x^2 + 7x + 2'
   """
-  def __init__ (self, coefs = [0]):
-    while len(coefs) > 1 and coefs[0] == 0:
-      coefs.pop(0)
-    
-    self.coefs = coefs
-    
-  def __str__ (self):
+  def __init__(self, coefs = [0]):
+    self.coefs = coefs if any(coefs) else [0]
+
+  def __str__(self):
     if self.coefs == [0]:
       return "'0'"
-    
+
     parts = []
     degree = len(self.coefs) - 1
 
     for coef in self.coefs:
       if coef == 0:
         degree -= 1
-        continue 
+        continue
 
-      sign = '-' if coef < 0 else '+'
       absCoef = abs(coef)
 
-      if degree == 0:
-        termBody = f"{absCoef}"
-      elif degree == 1:
-        termBody = "x" if absCoef == 1 else f"{absCoef}x"
-      else:
-        termBody = f"x^{degree}" if absCoef == 1 else f"{absCoef}x^{degree}"
-      
-      if not parts:
-        if sign == '-':
-          parts.append(f"-{termBody}")
-        else:
-          parts.append(f"{termBody}")
-      else:
-        parts.append(f" {sign} {termBody}")
+      termBody = (
+        f"{absCoef}" if degree == 0 else
+        ("x" if absCoef == 1 else f"{absCoef}x") if degree == 1 else
+        (f"x^{degree}" if absCoef == 1 else f"{absCoef}x^{degree}")
+      )
 
+      sign = "-" if coef < 0 else "+" if parts else ""
+      parts.append(f"{sign} {termBody}".strip())
       degree -= 1
 
-    return "'"+"".join(parts)+"'"
+    return "'" + " ".join(parts) + "'"
 
 if __name__ == '__main__':
     import doctest
