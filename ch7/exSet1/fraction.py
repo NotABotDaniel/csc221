@@ -29,8 +29,8 @@ class Fraction:
     self.d = denominator // gcd
 
   def _gcd(self, a, b):
-    # not sure how to do this yet
-    pass
+    # finding gcd using Euclidean algorithm
+    return a if b == 0 else self._gcd(b, a % b)
 
 
   def __str__(self):
