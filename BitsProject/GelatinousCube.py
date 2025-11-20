@@ -39,7 +39,15 @@ class GelCube:
     self.hp = 999999999999999999999999999999
     self.size = size
     self.victims = []
-
+  
+  def take_damage(self, damage):
+    self.hp -= damage
+  
+  def absorb(self, victim):
+    if len (self.victims) < 2:
+      self.victims.append(victim)
+    else:
+      print('cannot absorb more victims')
 
 
 class victim:
