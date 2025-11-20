@@ -1,10 +1,10 @@
 """
-  >>> dave = GelCube(2)
+  >>> dave = GelCube(2, 10)
   >>> print(dave.hp)
-  999999999999999999999999999999
+  9999999999999999999999999999990
   >>> dave.take_damage(199)
   >>> print(dave.hp)
-  999999999999999999999999999800
+  9999999999999999999999999999800
   >>> bob = victim()
   >>> jerry = victim()
   >>> print(bob.hp)
@@ -13,13 +13,13 @@
   1200
   >>> dave.absorb(bob)
   >>> print(dave.victims)
-  [dave]
+  [bob]
   >>> dave.burn()
   >>> print(bob.hp)
   1100
   >>> dave.absorb(jerry)
   >>> print(dave.victims)
-  [dave, jerry]
+  [bob, jerry]
   >>> dave.burn()
   >>> print(bob.hp)
   1000
@@ -27,16 +27,16 @@
   1100
   >>> garry = victim()
   >>> dave.absorb(garry)
-  'cannot absorb more victims'
+  cannot absorb more victims
   >>> print(dave.victims)
-  [dave, jerry]
+  [bob, jerry]
 
 """
 
 
 class GelCube:
-  def __init__ (self, size = 1):
-    self.hp = 999999999999999999999999999999
+  def __init__ (self, size = 1, hp = 1):
+    self.hp = hp * 999999999999999999999999999999
     self.size = size
     self.victims = []
   
@@ -48,7 +48,10 @@ class GelCube:
       self.victims.append(victim)
     else:
       print('cannot absorb more victims')
-
+  
+  def burn(self):
+    for v in self.victims:
+      v.take_damage(100)
 
 class victim:
   def __init__ (self):
