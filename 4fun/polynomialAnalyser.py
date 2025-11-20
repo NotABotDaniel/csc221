@@ -17,15 +17,24 @@ class Polynomial:
   def __init__ (self, polyStr = '0'):
     self.coefs = []
     polyStr = polyStr.strip()
-    polyStr = polyStr.replace('+' or ' + ', ' +')
-    polyStr = polyStr.replace('-' or ' - ', ' -')
+    polyStr = '+' + polyStr if polyStr[0] != '-' else polyStr
+    polyStr = polyStr.replace('-', ' - ').replace('+', ' + ')
     chars = polyStr.split()
-    chars[0] = '+' + chars[0] if chars[0][0] != '-' else chars[0]
+    for i, char in enumerate(chars):
+      if char == '+':
+        chars[i + 1] = '+' + chars[i + 1]
+        chars.remove(char)
+      elif char == '-':
+        chars[i + 1] = '-' + chars[i + 1]
+        chars.remove(char)
     for term in chars:      
       t = term.split('x')
       sign = 1 if t[0][0] == '+' else -1
-      num = sign * int(t[0][1:])
-      degree = 0 if len(t) == 1 else int(t[1][1:])
+      if len(t[0]) == 1:
+        num = sign
+      else:
+        num = sign * int(t[0][1:])
+      degree = 0 if len(t) == 1 else (1 if t[1] == '' else int(t[1][1:]))
       self.coefs.append((num, degree))
  
   def __str__(self):
