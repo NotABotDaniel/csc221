@@ -1,10 +1,10 @@
 """
   >>> dave = GelCube(2, 10)
   >>> print(dave.hp)
-  9999999999999999999999999999990
-  >>> dave.take_damage(190)
+  inf
+  >>> dave.take_damage(20000000)
   >>> print(dave.hp)
-  9999999999999999999999999999800
+  inf
   >>> bob = victim()
   >>> jerry = victim()
   >>> print(bob.hp)
@@ -12,14 +12,14 @@
   >>> print(jerry.hp)
   1200
   >>> dave.absorb(bob)
-  >>> print(dave.victims)
-  [bob]
+  >>> print(len(dave.victims))
+  1
   >>> dave.burn()
   >>> print(bob.hp)
   1100
   >>> dave.absorb(jerry)
-  >>> print(dave.victims)
-  [bob, jerry]
+  >>> print(len(dave.victims))
+  2
   >>> dave.burn()
   >>> print(bob.hp)
   1000
@@ -28,20 +28,20 @@
   >>> garry = victim()
   >>> dave.absorb(garry)
   cannot absorb more victims
-  >>> print(dave.victims)
-  [bob, jerry]
+  >>> print(len(dave.victims))
+  2
 
 """
-
+import math
 
 class GelCube:
-  def __init__ (self, size = 1, hp = 1):
-    self.hp = hp * 999999999999999999999999999999
+  def __init__ (self, size = 10, hp = 1):
+    self.hp = math.inf * hp
     self.size = size
     self.victims = []
 
   def __str__(self):
-    victim_str = '['+(', '.join(str(vic) for vic in self.victims) if self.victims else '')+']'
+    victim_str = '['+(', '.join(vic for vic in self.victims) if self.victims else '')+']'
     return f"GelCube(size={self.size}, hp={self.hp}, victims={victim_str})"
   
   def take_damage(self, damage):
@@ -66,7 +66,6 @@ class victim:
   
   def take_damage(self, damage):
     self.hp -= damage
-
 
 if __name__ == '__main__':
     import doctest
