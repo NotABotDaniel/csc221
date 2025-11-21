@@ -2,7 +2,7 @@
   >>> dave = GelCube(2, 10)
   >>> print(dave.hp)
   9999999999999999999999999999990
-  >>> dave.take_damage(199)
+  >>> dave.take_damage(190)
   >>> print(dave.hp)
   9999999999999999999999999999800
   >>> bob = victim()
@@ -39,6 +39,10 @@ class GelCube:
     self.hp = hp * 999999999999999999999999999999
     self.size = size
     self.victims = []
+
+  def __str__(self):
+    victim_str = '['+(', '.join(str(vic) for vic in self.victims) if self.victims else '')+']'
+    return f"GelCube(size={self.size}, hp={self.hp}, victims={victim_str})"
   
   def take_damage(self, damage):
     self.hp -= damage
@@ -56,6 +60,9 @@ class GelCube:
 class victim:
   def __init__ (self):
     self.hp = 1200
+  
+  def __str__(self):
+    return f"victim(hp={self.hp})"
   
   def take_damage(self, damage):
     self.hp -= damage
