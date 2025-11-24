@@ -69,7 +69,7 @@ class GelCube:
       
       for e in self.enemies:
         try:
-          self.victims.append(e)
+          self.absorb(e)
         except:
           pass
       self.vaporize()
