@@ -15,6 +15,11 @@ class Polynomial:
   """
   def __init__ (self, polyStr = '0'):
     self.coefs = []
+    chars = self.format(polyStr)
+    self.get_coefs(chars)
+
+
+  def format(self, polyStr):
     polyStr = polyStr.strip()
     polyStr = '+' + polyStr if polyStr[0] != '-' else polyStr
     polyStr = polyStr.replace('-', ' -').replace('+', ' +')
@@ -25,7 +30,10 @@ class Polynomial:
         chars.remove(c)
       elif c == '-':
         chars[i + 1] = '-' + chars[i + 1]
-        chars.remove(c)   
+        chars.remove(c)
+    return chars
+	
+  def get_coefs(self, chars):
     for term in chars:      
       t = term.split('x')
       sign = 1 if t[0][0] == '+' else -1
@@ -35,7 +43,8 @@ class Polynomial:
         num = sign * int(t[0][1:])
       degree = 0 if len(t) == 1 else (1 if t[1] == '' else int(t[1][1:]))
       self.coefs.append((num, degree))
-	     
+
+
   def __str__(self):
     return str(self.coefs)
   
