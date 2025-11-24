@@ -27,9 +27,11 @@
   2
 
 """
-import math
 
 class GelCube:
+  import math
+  import random
+
   def __init__ (self, hp = 1, size = 10):
     self.hitpts = 1000000 * hp
     self.alive = True
@@ -40,7 +42,7 @@ class GelCube:
 
   def __str__(self):
     victim_str = '['+(', '.join(v for v in self.victims) if self.victims else '')+']'
-    return f"GelCube(size={self.size}, hp={self.hp}, victims={victim_str})"
+    return f"GelCube(size={self.size}, hp={self.hitpts}, victims={victim_str})"
   
   def take_damage(self, damage):
     if not self.godmode:
@@ -49,7 +51,7 @@ class GelCube:
           print('you hit the cube so hard that it vaporized all its victims')
           self.vaporize()
           self.hitpts = 0
-        elif math.random() > 0.8:
+        elif random.Random() > 0.8:
           self.hitpts -= damage
           print(f'you dealt {damage} damage to the cube')
         else:
