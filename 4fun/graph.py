@@ -10,6 +10,8 @@
   >>> print(graph2.points)
   [(-11, -119), (-10, -98), (-9, -79), (-8, -62), (-7, -47), (-6, -34), (-5, -23), (-4, -14), (-3, -7), (-2, -2), (-1, 1), (0, 2), (1, 1), (2, -2), (3, -7), (4, -14), (5, -23), (6, -34), (7, -47), (8, -62), (9, -79), (10, -98)]
 """
+import curses
+from curses import wrapper
 
 class Graph:
   def __init__(self, coefs = []):
@@ -35,6 +37,10 @@ class Graph:
     for i, p in enumerate(self.points):
       if i > 0 and i <= self.width:
         p.m = p.get_slope()
+  
+  def printToScr(self):
+    for p in self.points:
+      pass
 
 class Point:
   def __init__(self, graph, i, x, y):
@@ -52,3 +58,13 @@ class Point:
 
   def get_slope(self):
     return (self.graph.points[self.i + 1].y - self.graph.points[self.i - 1].y) / 2
+
+def main(stdscr):
+  for thisGraph in graphs:
+    stdscr.clear()
+    thisGraph.printToScr()
+    stdscr.refresh()
+    stdscr.getch()
+
+graphs = []
+wrapper(main)
