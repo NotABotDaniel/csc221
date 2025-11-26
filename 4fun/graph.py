@@ -12,6 +12,7 @@
 """
 import curses
 from curses import wrapper
+import subprocess
 
 class Graph:
   def __init__(self, coefs = []):
@@ -29,18 +30,20 @@ class Graph:
     for i, x in enumerate(range(-self.width // 2 - 1, self.width // 2 + 1)):
       y = 0
       for c in coefs:
-        y += c[0] * (x ** c[1])
-      points.append(Point(self, i, x, -y))
+        y += (c[0] * (x ** c[1])) // 2
+      points.append(Point(self, i, x, y))
     return points
 
   def find_slopes(self):
     for i, p in enumerate(self.points):
       if i > 0 and i <= self.width:
         p.m = p.get_slope()
+        p.line = p.get_line()
   
-  def printToScr(self):
-    for p in self.points:
-      pass
+  def printToScr(self, stdscr):
+    for i, p in enumerate(self.points):
+      if i > 0 and i <= self.width:
+        stdscr.addstr(p.x + self.width, -p.y + self.height, p.line)
 
 class Point:
   def __init__(self, graph, i, x, y):
@@ -48,6 +51,7 @@ class Point:
     self.y = y
     self.i = i
     self.m = None
+    self.line = ' '
     self.graph = graph
 
   def __str__(self):
@@ -58,13 +62,28 @@ class Point:
 
   def get_slope(self):
     return (self.graph.points[self.i + 1].y - self.graph.points[self.i - 1].y) / 2
+  
+  def get_line(self):
+    if self.m > 3:
+      return '/' 
+    elif self.m > 1:
+      return '⁄'
+    elif self.m >= -1:
+      return '—' 
+    elif self.m >= -3:
+      return '∖' 
+    else:
+      return '\\'
 
 def main(stdscr):
   for thisGraph in graphs:
+    curses.resize_term(thisGraph.height, thisGraph.width)
+    subprocess.call(["/usr/bin/resize", "-s", str(thisGraph.height), str(thisGraph.width)])
     stdscr.clear()
-    thisGraph.printToScr()
+    thisGraph.printToScr(stdscr)
     stdscr.refresh()
     stdscr.getch()
 
-graphs = []
+g = Graph([(2,1),(3,0)])
+graphs = [g]
 wrapper(main)
