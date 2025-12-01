@@ -23,8 +23,21 @@ class Graph:
     self.find_slopes()
 
   def __str__(self):
-    return f"Graph(points={self.points}, width={self.width}, height={self.height})"
+    return f"Graph(points={self.points}, width={self.width}, height={self.height} equation={self.printEq()})"
   
+  def printEq(self):
+    eq = ''
+    for c in self.coefs:
+      if c[0] >= 0 and eq != '':
+        eq += '+'
+      if c[1] == 0:
+        eq += f'{c[0]}'
+      elif c[1] == 1:
+        eq += f'{c[0]}x'
+      else:
+        eq += f'{c[0]}x^{c[1]}'
+    return eq
+
   def get_points(self, coefs): 
     points = []
     for i, x in enumerate(range(-self.width // 2 - 1, self.width // 2 + 1)):
@@ -41,9 +54,12 @@ class Graph:
         p.line = p.get_line()
   
   def printToScr(self, stdscr):
+    plotStr(stdscr, (self.width - len(self.printEq())) // 2, 0, self.printEq())
+    plotStr(stdscr, 1, self.width + 1, 'X')
+    plotStr(stdscr, self.height + 2, 0, 'Y')
     for i, p in enumerate(self.points):
       if i > 0 and i <= self.width:
-        stdscr.addstr(p.x + self.width, -p.y + self.height, p.line)
+        plotStr(stdscr, p.x + self.width // 2 + 1, -p.y + self.height // 2 + 2, p.line)
 
 class Point:
   def __init__(self, graph, i, x, y):
@@ -75,10 +91,14 @@ class Point:
     else:
       return '\\'
 
+def plotStr(stdscr, x, y, str):
+  stdscr.addstr(y, x, str)
+
 def main(stdscr):
   for thisGraph in graphs:
-    curses.resize_term(thisGraph.height, thisGraph.width)
-    subprocess.call(["/usr/bin/resize", "-s", str(thisGraph.height), str(thisGraph.width)])
+    # doesn't work
+    # curses.resize_term(thisGraph.height, thisGraph.width)
+    # subprocess.call(["/usr/bin/resize", "-s", str(thisGraph.height), str(thisGraph.width)])
     stdscr.clear()
     thisGraph.printToScr(stdscr)
     stdscr.refresh()
