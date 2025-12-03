@@ -18,7 +18,6 @@ class Polynomial:
     chars = self.format(polyStr)
     self.get_coefs(chars)
 
-
   def format(self, polyStr):
     polyStr = polyStr.strip()
     polyStr = '+' + polyStr if polyStr[0] != '-' else polyStr
