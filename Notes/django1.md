@@ -13,7 +13,7 @@ User action triggers a request for data that is sent from the browser to the web
 - aplication starts with settings.py
 
 ### settings.py
-"ALLOWED_HOSTS = ['*']" (I know from past experience that '*' means 'everywhere')
+"ALLOWED_HOSTS = ['\*']" (I know from past experience that '\*' means 'everywhere')
 This line represents a filter for incoming requests.
 
 "INSTALLED_APPS" - define all  applications 
