@@ -65,6 +65,35 @@ example: http://example.com/page.html
 - called RFCs
 - No one owns the internet! (yay)
 
-____
 
-to be continued
+## Simple python web browser
+What happens on your end
+
+### To open a file
+1. Create a socket
+2. Secure a connection (try and exept cuz in might err)
+4. Encode a command (GET requesst)
+5. Send the command
+6. Wait (or don't) for incoming data
+7. Receive incoming data
+8. Repeat 6 and 7
+9. Decode data
+
+### Yay?
+Yay
+
+
+## Simple python web server
+What happens on their end
+
+### To respond to a request
+By default, server is waiting for incoming requests
+
+1. See something incoming
+2. declare acceptable port number
+3. If port is in use, que incoming requests
+4. Wait for secure connection
+5. ...
+
+This is unfinished
+
