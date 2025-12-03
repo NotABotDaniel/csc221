@@ -14,29 +14,25 @@ User action triggers a request for data that is sent from the browser to the web
 
 ### settings.py
 "ALLOWED_HOSTS = ['\*']" (I know from past experience that '\*' means 'everywhere')
+
 This line represents a filter for incoming requests.
 
-"INSTALLED_APPS" - define all  applications 
-
-"ROOT_URLCONF" - load the url
-
-"urlpatterns" - global url routing
+- "INSTALLED_APPS" : define all  applications 
+- "ROOT_URLCONF"   : load the url
+- "urlpatterns"    : global url routing
 
 
 ## Web application and request/response cycle
 
 ### applications used
-Front end - done in your web browser
-html,css,dom,javascript,jquery
-
-Back end - done on the web server
-django/flask, sqlite3/mysql
+- Front end : done in your web browser: html,css,dom,javascript,jquery
+- Back end  : done on the web server: django/flask, sqlite3/mysql
 
 ### request response cycle
 Your browser sends a request, the server responds. (detailed in "big bicture" section of prev vid)
 
-GET - requesting for data to be sent back
-POST - requesting for the server to do something with the data you send it
+- GET  : requesting for data to be sent back
+- POST : requesting for the server to do something with the data you send it
 
 
 ## Network Sockets
@@ -47,12 +43,13 @@ The connection that computers use to communicate.
 
 Needs protocols to communicate properly.
 Needs a handshake to secure connection.
+
 Used to start with this digital handshake sound: 
 blooEEEEEEEoooooo-wakdawakdawakda-kkkkkkkkk-bedldeepbedldeep-SKIIIIIIIRRRR-kkssssshhhhhhh etc...
 
 ### TCP port numbers
-Every computer has an IP address.
-Port numbers are application-specific addresses witin a system.
+- Every computer has an IP address.
+- Port numbers are application-specific addresses witin a system.
 
 
 ## Hyper text transfer protocol (http)
@@ -60,12 +57,13 @@ How browsers talk to servers (and much more)
 
 ### uniform recourse locator
 consists of: protocol://host/document
+
 example: http://example.com/page.html
 
 ### internet standars
-preposed in 1981 - we have a set of protocol spesifications
-called RFCs
-No one owns the internet! (yay)
+- preposed in 1981, we have a set of protocol spesifications
+- called RFCs
+- No one owns the internet! (yay)
 
 ____
 
