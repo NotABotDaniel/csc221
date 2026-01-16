@@ -15,7 +15,7 @@ django.setup()
 
 #define your template. 
 #these get long, so it's helpful to create it as a separate file
-template = django.template.loader.get_template('template.html')
+template = django.template.loader.get_template('validReview.html')
 
 #define your context and render. I'm looping through a list
 # so that I can render a bunch of times.
