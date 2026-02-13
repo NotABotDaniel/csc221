@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <h1>How Long will it take to solve this polynomial?</h1>
+</header>
+<form method="post">
+  {% csrf_token %}
+  <p>
+    <label for="coefs">Number of coefficients:</label>
+    <input type="text" name="coefs" />
+  </p>
+  <p>
+    <label for="degree">Degree of polynomial:</label>
+    <input type="text" name="degree" />
+  </p>
+  <input type="submit"/>
+</form>
+{% if solve_time %}
+  <hr>
+  <h3>Result</h3>
+
+  <p>Number of coefficients: {{ coefs }}</p>
+  <p>Degree of polynomial: {{ degree }}</p>
+  <p>Time to solve: {{ solve_time }} min</p>
+{% endif %}
+{% endblock %}

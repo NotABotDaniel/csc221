@@ -1,0 +1,28 @@
+body {
+  background-color:#000f1e;
+	color:cyan;
+	font-family:"Oswald", "Helvetica", sans-serif;
+	font-weight:200
+}
+header {
+	background-color:#1fd4d4;
+	color:black;
+	text-align:center;
+	padding-top:1px;
+	padding-bottom:5px;
+	margin-bottom:10px;
+	border-radius: 20px;
+}
+a {
+	color:magenta;
+	transition:color 0.2s ease-in-out 0s,
+}
+a:hover {
+	color:white;
+}
+hr {
+	color:cyan;
+	height:0.1px
+}
+
+

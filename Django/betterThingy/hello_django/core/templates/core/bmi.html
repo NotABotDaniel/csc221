@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>BMI Calculator</h1>
+<form method="post">
+{% csrf_token %}
+<p>
+    <label for="height">
+        Height (cm): 
+    </label>
+    <input type="text" name="height"  />
+</p>
+<p>
+    <label for="weight">
+        Weight (kg): 
+    </label>
+    <input type="text" name="weight" />
+</p>
+<input type="submit"/>
+</form>
+{% if bmi %}
+    <hr>
+    <h3>BMI Result</h3>
+    <p>Height: {{ height }} cm</p>
+    <p>Weight: {{ weight }} kg</p>
+    <p>Your BMI: {{ bmi }}</p>
+    <p>Category: {{ category }}</p>
+{% endif %}
+{% endblock %}
