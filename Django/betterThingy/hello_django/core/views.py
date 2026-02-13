@@ -94,6 +94,7 @@ class SolveTime(View):
 
     return redirect(request.path)
   
+
 class TodoIndex(View):
   def get(self, request):
     tasks = Task.objects.all()
@@ -102,6 +103,14 @@ class TodoIndex(View):
     }
     return render(request, 'core/todo.html', todo_data)
   
+  def post(self, request):
+    name = request.POST.get('name')
+    description = request.POST.get('description')
+
+    Task.objects.create(name=name, description=description)
+
+    return redirect(request.path)
+
 class EconIndex(View):
   def get(self, request):
     title_data = {'title': "Country name"}
