@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<heaeder>
+  <h1>Todo List</h1>
+</heaeder>
+<p>Here are some of my tasks</p>
+<ol>
+  {% for task in tasks %}
+    <li>{{ task.name }}</li>
+  {% endfor %}
+</ol>
+{% endblock %}

@@ -1,0 +1,40 @@
+body {
+  background-color: #d9f6fc;
+  color: #001a1f;
+  font-family:"Oswald", "Helvetica", sans-serif;
+	font-weight:200
+}
+header {
+	background-color:#6fe6fc;
+	color:black;
+	text-align:center;
+	padding-top:1px;
+	padding-bottom:5px;
+	margin-bottom:10px;
+	border-radius: 20px;
+}
+a {
+	color:magenta;
+	transition:color 0.2s ease-in-out 0s,
+}
+a:hover {
+	color:white;
+}
+nav {
+	background-color:#012b66;
+	text-align:center;
+	vertical-align: middle;
+	display:grid;
+	grid-template-columns: repeat(4, 1fr);
+	height:50px;
+	margin-bottom:10px;
+
+}
+nav a {
+  color:white;
+  font-size:20px;
+  line-height:50px;
+}
+nav a:hover {
+  color:cyan;
+}

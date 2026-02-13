@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+<h1>Welcome to my website!</h1>
+</header>
+<p>Here are some of my pages</p>
+<ul>
+    <li><a href="core/icecream/chocolate">
+            Ice Cream (Add your favorite flavor to the URL)
+        </a>
+    </li>
+    <li><a href="core/">
+            Core App Home
+        </a>
+    </li>
+    <li><a href="admin/">
+            Django's Admin Interface
+        </a>
+    </li>
+    <li>
+      <a href="core/count">
+        View Counter
+      </a>      
+    </li>
+    <li>
+      <a href="core/solvetime">
+        Calculator
+      </a>
+    </li>
+{% endblock %}
