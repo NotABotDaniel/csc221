@@ -95,7 +95,7 @@ class SolveTime(View):
     return redirect(request.path)
   
 
-class TodoIndex(View):
+class Todo(View):
   def get(self, request):
     tasks = Task.objects.all()
     todo_data = {
@@ -104,12 +104,30 @@ class TodoIndex(View):
     return render(request, 'core/todo.html', todo_data)
   
   def post(self, request):
+    # if select button was clicked
+    selectedTask = request.POST.get('task')
+
+    return redrirect(request.path)
+    
+    # if the add button was clicked
     name = request.POST.get('name')
     description = request.POST.get('description')
 
     Task.objects.create(name=name, description=description)
 
     return redirect(request.path)
+  
+class TodoDelete(View):
+  def get(self, request, id_from_url):
+    task = Task.objects.get(id=id_from_url)
+    return render(request, 'core/taskConfirmDelete.html', {'task': task})
+  
+  def post(self, request, id_from_url):
+    task = Task.objects.get(id=id_from_url)
+    task.delete()
+    return redirect('/core/todo')
+
+
 
 class EconIndex(View):
   def get(self, request):

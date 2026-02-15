@@ -11,7 +11,8 @@ urlpatterns = [
   path('bmi', views.Bmi.as_view(), name='count'),
   path('bread', views.Bread.as_view(), name='bread'),
   path('solvetime', views.SolveTime.as_view(), name='solvetime'),
-  path('todo', views.TodoIndex.as_view(), name='todo'),
+  path('todo', views.Todo.as_view(), name='todo'),
+  path('taskConfirmDelete/<int:id_from_url>', views.TodoDelete.as_view(), name='todoDelete'),
   
   path('econProject/home', views.EconIndex.as_view(), name='econProject/index.html'),
   path('econProject/map', views.EconMap.as_view(), name='econProject/map.html'),

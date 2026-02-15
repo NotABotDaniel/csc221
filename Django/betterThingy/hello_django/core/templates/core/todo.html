@@ -5,15 +5,27 @@
   <h1>Todo List</h1>
 </header>
 <p>Here are some of my tasks</p>
+<script>
+  function select(id) {
+    selectedID = id;
+  }
+</script>
+
 <ol>
   {% for task in tasks %}
-    <li>{{ task.name }}</li>
+    <li>
+      {{ task.name }} 
+      <button type="submit" onclick="select({{ task.id }})">Description</button>
+      <a href="taskConfirmDelete/{{ task.id }}">Delete</a>
+    </li>
   {% endfor %}
 </ol>
+
 <hr>
+
 <h3>Add a new task</h3>
+{% csrf_token %}
 <form method="post">
-  {% csrf_token %}
   <p>
     <label for="name">Name:</label>
     <input type="text" name="name" />
