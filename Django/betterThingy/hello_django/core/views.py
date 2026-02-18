@@ -2,6 +2,8 @@ from urllib import request
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import Task
+from .models import Enemy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # Create your views here.
 count = 1
@@ -130,3 +132,21 @@ class EconEcon(View):
   def get(self, request):
     title_data = {'title': "Country Economy"}
     return render(request, 'core/econProject/econ.html', title_data)
+  
+
+class EnemyIndex(ListView):
+  model = Enemy
+
+class EnemyAdd(CreateView):
+  model = Enemy
+  fields = '__all__'
+  success_url = 'core/enemies'
+
+class EnemyRename(UpdateView):
+  model = Enemy
+  fields = '__all__'
+  success_url = 'core/enemies'
+
+class EnemyDelete(DeleteView):
+  model = Enemy
+  success_url = 'core/enemies'

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <h1>Edit {{ object }}</h1>
+</header>
+<form method="post">
+  {% csrf_token %}
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="{{ object.name }}" required>
+  </p>
+  <input type="submit" value="Update Enemy">
+</form>
+{% endblock %}

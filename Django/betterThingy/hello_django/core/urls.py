@@ -17,4 +17,9 @@ urlpatterns = [
   path('econProject/map', views.EconMap.as_view(), name='econProject/map.html'),
   path('econProject/imports', views.EconImports.as_view(), name='econProject/impexp.html'),
   path('econProject/economy', views.EconEcon.as_view(), name='econProject/econ.html'),
+
+  path('enemies', views.EnemyIndex.as_view(), name='enemies'),
+  path('enemies/create', views.EnemyAdd.as_view(), name='enemy_add'),
+  path('enemies/<int:pk>/update', views.EnemyRename.as_view(), name='enemy_update'),
+  path('enemies/<int:pk>/delete', views.EnemyDelete.as_view(), name='enemy_delete'),
 ]

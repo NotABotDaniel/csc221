@@ -9,3 +9,9 @@ class Task(models.Model):
 
   def __str__(self):
     return "[X] " + self.name if self.completed else "[  ] " + self.name
+
+class Enemy(models.Model):
+  name = models.CharField(max_length=255)
+
+  def __str__(self):
+    return self.name

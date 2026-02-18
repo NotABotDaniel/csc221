@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <header>
+    <h1>List of Enemies</h1>
+  </header>
+  {% if object_list %}
+    <ul>
+      {% for enemy in object_list %}
+        <li>
+          {{ enemy }}
+          <a href="{% url 'enemy_update' enemy.id %}">Edit</a>
+          <a href="{% url 'enemy_delete' enemy.id %}">Delete</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No enemies yet.</p>
+  {% endif %}
+  <a href="{% url 'enemy_add' %}">Add Enemy</a>
+{% endblock %}

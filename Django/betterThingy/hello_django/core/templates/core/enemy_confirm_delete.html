@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <h1>Deleting "{{ object }}"?</h1>
+</header>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Confirm">
+  <a href="enemy_list.html">Cancel</a>
+</form>
+{% endblock %}
