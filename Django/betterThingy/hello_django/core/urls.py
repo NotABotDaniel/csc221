@@ -15,7 +15,7 @@ urlpatterns = [
   path('taskConfirmDelete/<int:id_from_url>', views.TodoDelete.as_view(), name='todoDelete'),
   
   path('econProject/home', views.EconIndex.as_view(), name='econProject/index.html'),
+  path('econProject/background', views.EconBginfo.as_view(), name='econProject/bginfo.html'),
   path('econProject/map', views.EconMap.as_view(), name='econProject/map.html'),
-  path('econProject/imports', views.EconImports.as_view(), name='econProject/impexp.html'),
   path('econProject/economy', views.EconEcon.as_view(), name='econProject/econ.html'),
 ]

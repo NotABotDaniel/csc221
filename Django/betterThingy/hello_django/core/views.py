@@ -131,20 +131,20 @@ class TodoDelete(View):
 
 class EconIndex(View):
   def get(self, request):
-    title_data = {'title': "Country name"}
+    title_data = {'title': "The Social Democracy of Ainamor"}
     return render(request, 'core/econProject/index.html', title_data)
+
+class EconBginfo(View):
+  def get(self, request):
+    title_data = {'title': "Background Information"}
+    return render(request, 'core/econProject/bginfo.html', title_data)
 
 class EconMap(View):
   def get(self, request):
-    title_data = {'title': "Country Map"}
+    title_data = {'title': "Maps"}
     return render(request, 'core/econProject/map.html', title_data)
-
-class EconImports(View):
-  def get(self, request):
-    title_data = {'title': "Country Imports and Exports"}
-    return render(request, 'core/econProject/impexp.html', title_data)
   
 class EconEcon(View):
   def get(self, request):
-    title_data = {'title': "Country Economy"}
+    title_data = {'title': "Economy"}
     return render(request, 'core/econProject/econ.html', title_data)
