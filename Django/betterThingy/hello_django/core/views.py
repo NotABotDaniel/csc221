@@ -140,13 +140,13 @@ class EnemyIndex(ListView):
 class EnemyAdd(CreateView):
   model = Enemy
   fields = '__all__'
-  success_url = 'core/enemies'
+  success_url = '../enemies'
 
 class EnemyRename(UpdateView):
   model = Enemy
   fields = '__all__'
-  success_url = 'core/enemies'
+  success_url = '..'
 
 class EnemyDelete(DeleteView):
   model = Enemy
-  success_url = 'core/enemies'
+  success_url = '..'

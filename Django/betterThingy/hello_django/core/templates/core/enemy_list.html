@@ -4,18 +4,18 @@
   <header>
     <h1>List of Enemies</h1>
   </header>
-  {% if object_list %}
+  {% if enemy_list %}
     <ul>
-      {% for enemy in object_list %}
+      {% for enemy in enemy_list %}
         <li>
           {{ enemy }}
-          <a href="{% url 'enemy_update' enemy.id %}">Edit</a>
-          <a href="{% url 'enemy_delete' enemy.id %}">Delete</a>
+          <a href="/core/enemies/edit/{{enemy.id}}">Edit</a>
+          <a href="/core/enemies/delete/{{enemy.id}}">Delete</a>
         </li>
       {% endfor %}
     </ul>
   {% else %}
     <p>No enemies yet.</p>
   {% endif %}
-  <a href="{% url 'enemy_add' %}">Add Enemy</a>
+  <a href="enemies/create">Add Enemy</a>
 {% endblock %}
